@@ -97,9 +97,17 @@ O commit semântico possui os elementos estruturais abaixo (tipos), que informam
 
 - [ ] Conectar com o banco de dados (SQLite ou PostgreSQL)
 - [ ] Criar as models (Feirante/Mercado, Instituição de Caridade, Alimento)
-- [ ] Criar o CRUD de usuários (Feirante/Mercado, Instituição de Caridade)
-    - [ ] Criar autenticação com criptografia da senha (MD5 + Hash ou SHA-256)
-- [ ] Criar o CRUD de Alimento
+    - [ ] Feira/mercado
+    - [ ] Feirante/funcionário
+    - [ ] Alimento
+    - [ ] Instituição de caridade
+<img src="./diagramER.png" alt="Diagrama Entidade Relacionamento" width="650"/>
+- [ ] Criar o CRUDs de usuários (Feirante/Mercado, Instituição de Caridade, Produtos)
+    - [ ] Feira/Mercado
+    - [ ] Feirante/Funcionário
+    - [ ] Instituição de Caridade
+    - [ ] Alimento
+- [ ] Criar autenticação com criptografia da senha (MD5 + Hash ou SHA-256)
 - [ ] Implementar filtros de busca
 - [ ] Implementar georeferenciamento com mapa (Google Maps?!)
 - [ ] Integrar um sistema de mensageria e notificações
