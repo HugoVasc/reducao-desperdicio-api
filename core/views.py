@@ -1,4 +1,9 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from rest_framework.decorators import api_view
+from rest_framework import status
+from rest_framework.response import Response
+# from django.shortcuts import render
+from .serializers import FeiraSerializer, ClienteSerializer, InstituicaoSerializer, ProdutoSerializer, FeiranteSerializer
 from django.views.generic import TemplateView, ListView, DetailView
 
 # Create your views here.
@@ -33,6 +38,21 @@ class Doacoes(TemplateView):
 class Sobras(TemplateView):
     template_name = "sobras.html"
     
+@api_view(['GET', 'POST'])
+def feira(request):
+    if request.method == 'GET':
+        feiras = FeiraSerializer.Meta.model.objects.all()
+        serializer = FeiraSerializer(feiras, many=True)
+        return JsonResponse(serializer.data, safe=False)
+    elif request.method == 'POST':
+        serializer = FeiraSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    
+
 # to do
 class DescricaoProdutos(DetailView):
     pass

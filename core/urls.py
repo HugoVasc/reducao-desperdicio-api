@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import Homepage, Cadastro, CadastroFeirante, CadastroInstituicao, CadastroCliente, Filtro, Mapa, Ofertas, Doacoes, Sobras
+from .views import Homepage, Cadastro, CadastroFeirante, CadastroInstituicao, CadastroCliente, Filtro, Mapa, Ofertas, Doacoes, Sobras, feira
 
 
 urlpatterns = [
@@ -12,5 +12,6 @@ urlpatterns = [
     path('cliente/feiras', Mapa.as_view()),
     path('cliente/ofertas', Ofertas.as_view()),
     path('instituicao/doacao', Doacoes.as_view()),
-    path('feirante/sobras', Sobras.as_view())
+    path('feirante/sobras', Sobras.as_view()),
+    path('feira', feira),
 ]
