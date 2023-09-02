@@ -37,5 +37,6 @@ class Sobras(TemplateView):
 class DescricaoProdutos(DetailView):
     pass
 
+# to do
 class EditarProdutos(TemplateView):
     pass
