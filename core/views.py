@@ -51,7 +51,7 @@ def feira(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
 
-@api_view(['GET', 'POST'])
+@api_view(['GET', 'POST', 'PUT', 'DELETE'])
 def produto(request):
     if request.method == 'GET':
         produtos = ProdutoSerializer.Meta.model.objects.all()
