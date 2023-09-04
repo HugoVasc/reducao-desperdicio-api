@@ -14,10 +14,19 @@ LISTA_ESTADOS = (
 # tabela Usuario personalizada (to do)
 class Usuario(AbstractUser):
     telefone_wpp = models.CharField(max_length=20)
-    pass
+    
+    def get_telefone_wpp(telelone):
+        telelone = list(telelone)
+        sufix = telelone[-4:]
+        prefix = telelone[:-4]
+        prefix.insert(0, "(")
+        prefix.insert(3, ")")
+        return ''.join(prefix) + '-'+''.join(sufix)
+        
 
 # tabela Cliente
 class Cliente(models.Model):
+    id_cliente = models.AutoField(primary_key=True, unique=True)
     user = models.OneToOneField(Usuario, on_delete=models.CASCADE)
     preferencia_org = models.BooleanField(default=False)
     
@@ -26,6 +35,7 @@ class Cliente(models.Model):
     
 # class Instituicao
 class Instituicao(models.Model):
+    id_instituicao = models.AutoField(primary_key=True, unique=True)
     user = models.OneToOneField(Usuario, on_delete=models.CASCADE)
     nome_instituicao = models.CharField(max_length=20)
     cnpj = models.CharField(max_length=14, unique=True)
@@ -40,6 +50,7 @@ class Instituicao(models.Model):
 
 # tabela Feira
 class Feira(models.Model):
+    id_feira = models.AutoField(primary_key=True, unique=True)
     nome_feira = models.CharField(max_length=50)
     img = models.ImageField(upload_to="img_feiras", default="media/img_feiras/default.jpg")
     #cep = CEPField() -> não aparece no admin
@@ -53,6 +64,7 @@ class Feira(models.Model):
 
 # tabela Produto
 class Produto(models.Model):
+    id_produto = models.AutoField(primary_key=True, unique=True)
     nome_produto = models.CharField(max_length=15)
     descricao = models.TextField(max_length=100)
     qtd = models.CharField(max_length=15)
@@ -65,6 +77,7 @@ class Produto(models.Model):
     
 # tabela Feirante
 class Feirante(models.Model):
+    id_feirante = models.AutoField(primary_key=True, unique=True)
     user = models.OneToOneField(Usuario, on_delete=models.CASCADE)
     nome_banca = models.CharField(max_length=50)
     bancas = models.ManyToManyField(Feira, related_name='feirantes')
