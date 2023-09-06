@@ -64,4 +64,10 @@ def cliente(request):
         clientes = ClienteSerializer.Meta.model.objects.all()
         serializer = ClienteSerializer(clientes, many=True)
         return JsonResponse(serializer.data, safe=False)
-    
+    if request.method == 'POST':
+        serializer = ClienteSerializer(data=request.data)
+        if serializer.is_valid():
+            print(serializer.data)
+            # serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED) 
+        return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
