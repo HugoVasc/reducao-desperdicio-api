@@ -1,6 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
-from .forms import CEPField
+from accounts.models import Usuario
+# from .forms import CEPField
 
 LISTA_ESTADOS = (
     ("df", "DF"),
@@ -9,12 +9,6 @@ LISTA_ESTADOS = (
 )
 
 # Create your models here.
-
-class Usuario(AbstractUser):
-    id = models.AutoField(primary_key=True, unique=True)
-    username = models.CharField(max_length=20, unique=True, blank=True)
-    telefone_wpp = models.CharField(max_length=20)
-    pass
 
 # tabela Cliente
 class Cliente(models.Model):
